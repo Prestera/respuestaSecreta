@@ -39,33 +39,31 @@ function escribirLetraCorrecta(){
     fraseElement.value = fraseElement.value.substring(0, fraseElement.value.length-1)+letraAAregar;
 }
 
-preguntarBoton.addEventListener("click",()=>{
-    if (preguntaElement.value === ""){
-         return respuestaElement.innerText = "No puedo responder a una pregunta vacía";
+
+   preguntarBoton.addEventListener("click",()=>{
+    if(preguntaElement.value === ""){
+        return respuestaElement.innerText = "No puedo responder a una pregunta vacia";
     }
     if(
-        fraseElement.value === fraseSecreta 
-        && respuestaSecreta !== "" 
-        && preguntaElement !== "" ){
-        respuestaElement.innerText = respuestaSecreta;
-    }else 
-    {
-        respuestaElement.innerText = "Mmmm, preferiria no responder esa pregunta";
+        fraseElement.value === fraseSecreta
+        && respuestaSecreta != ""
+    ){
+        const respuestaFiltrada = respuestaSecreta.replace(/-/g, "");
+        respuestaElement.innerText = respuestaFiltrada;  
+    } else {
+        respuestaElement.innerText = "Algo malio sal";
     }
 })
-
-reiniciarBoton.addEventListener("click", ()=>{
-    estadoTruco = false;
-    //fraseSecreta = "";
+        
+reiniciarBoton.addEventListener("click",()=>{
     preguntaElement.value = "";
     fraseElement.value = "";
     respuestaSecreta = "";
-    respuestaElement.innerText = "Hazme una pregunta" ;
+    estadoTruco = false;
+    respuestaElement.innerText = "Hazme una pregunta";
     preguntaElement.focus();
-})
+})        
 
-        
 preguntaElement.focus();
-    
 
 
